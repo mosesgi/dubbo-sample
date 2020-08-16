@@ -1,0 +1,22 @@
+server:
+  port: 8081
+
+dubbo:
+  config-center:
+    timeout: 10000
+  application:
+    id: du-customer-web
+    name: du-customer-web
+  consumer:
+    timeout: 10000
+    retries: 0
+  scan:
+    # 包名根据自己的实际情况写
+    base-packages: com.moses.web
+  protocol:
+    port: 20882
+    name: dubbo
+  registry:
+    protocol: zookeeper
+    #zookeeper注册中心地址
+    address: zookeeper://192.168.50.201:2181?backup=192.168.50.202:2181,192.168.50.203:2181
