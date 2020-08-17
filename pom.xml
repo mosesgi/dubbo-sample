@@ -27,6 +27,7 @@
         <dubbo.version>2.7.7</dubbo.version>
         <curator.version>4.2.0</curator.version>
         <spring.boot.version>2.2.9.RELEASE</spring.boot.version>
+        <docker.image.prefix>du_sample</docker.image.prefix>
     </properties>
 
     <dependencyManagement>
@@ -122,6 +123,11 @@
                 <plugin>
                     <groupId>org.springframework.boot</groupId>
                     <artifactId>spring-boot-maven-plugin</artifactId>
+                </plugin>
+                <plugin>
+                    <groupId>com.spotify</groupId>
+                    <artifactId>docker-maven-plugin</artifactId>
+                    <version>1.2.0</version>
                 </plugin>
             </plugins>
         </pluginManagement>

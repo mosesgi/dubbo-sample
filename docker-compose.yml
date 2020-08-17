@@ -1,0 +1,29 @@
+version: "3"
+services:
+  zookeeper:
+    image: 'zookeeper'
+    hostname: zookeeper
+    restart: always
+  du-user:
+    image: 'du_sample/du-user-impl:latest'
+    depends_on:
+      - zookeeper
+    environment:
+      - ZK_SERVER=zookeeper
+  du-order:
+    image: 'du_sample/du-order-impl:latest'
+    depends_on:
+      - zookeeper
+      - du-user
+    environment:
+      - ZK_SERVER=zookeeper
+  du-web:
+    image: 'du_sample/du-customer-web:latest'
+    depends_on:
+      - zookeeper
+      - du-user
+      - du-order
+    environment:
+      - ZK_SERVER=zookeeper
+    ports:
+      - 80:80
